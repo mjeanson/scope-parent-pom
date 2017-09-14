@@ -32,6 +32,8 @@
   <properties>
     <required-maven-version>3.0.5</required-maven-version>
     <required-java-version>1.8</required-java-version>
+    <javafx-jar-version>8.0.0-SNAPSHOT</javafx-jar-version>
+
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <kotlin.version>1.1.4-2</kotlin.version>
@@ -340,6 +342,14 @@
   <dependencyManagement>
     <dependencies>
       <!-- Runtime dependencies -->
+      <dependency>
+        <groupId>com.oracle</groupId>
+        <artifactId>javafx</artifactId>
+        <version>${javafx-jar-version}</version>
+        <systemPath>${java.home}/lib/ext/jfxrt.jar</systemPath>
+        <scope>system</scope>
+      </dependency>
+
       <dependency>
         <groupId>org.jetbrains.kotlin</groupId>
         <artifactId>kotlin-stdlib-jre8</artifactId>
