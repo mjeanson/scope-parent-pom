@@ -301,8 +301,6 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.20</version>
           <configuration>
-            <forkCount>3</forkCount>
-            <reuseForks>true</reuseForks>
             <!-- This option should help for Travis. -->
             <argLine>-Xmx1024m</argLine>
           </configuration>
