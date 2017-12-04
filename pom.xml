@@ -59,11 +59,6 @@
 
   <repositories>
     <repository>
-      <id>ttt-repo</id>
-      <name>Trace Compass Test Traces</name>
-      <url>http://archive.eclipse.org/tracecompass/tracecompass-test-traces/maven</url>
-    </repository>
-    <repository>
       <id>efficios-releases-repo</id>
       <name>EfficiOS Releases</name>
       <url>https://mvn.efficios.com/maven/releases/</url>
@@ -402,9 +397,9 @@
       </dependency>
 
       <dependency>
-        <groupId>org.eclipse.tracecompass.testtraces</groupId>
-        <artifactId>tracecompass-test-traces-ctf</artifactId>
-        <version>1.7.2</version>
+        <groupId>org.lttng.scope</groupId>
+        <artifactId>ttt-ctf</artifactId>
+        <version>2.0.0</version>
         <scope>test</scope>
       </dependency>
 
