@@ -26,7 +26,7 @@
 
   <groupId>org.lttng.scope</groupId>
   <artifactId>scope-parent-pom</artifactId>
-  <version>1.0.7</version>
+  <version>1.0.8</version>
   <packaging>pom</packaging>
 
   <properties>
@@ -202,6 +202,11 @@
           </execution>
         </executions>
       </plugin>
+
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+      </plugin>
     </plugins>
 
     <pluginManagement>
@@ -321,7 +326,7 @@
           <version>2.20.1</version>
           <configuration>
             <!-- This option should help for Travis. -->
-            <argLine>-Xmx1024m</argLine>
+            <argLine>${surefireArgLine} -Xmx1024m</argLine>
           </configuration>
         </plugin>
 
@@ -356,6 +361,38 @@
           <groupId>org.jetbrains.dokka</groupId>
           <artifactId>dokka-maven-plugin</artifactId>
           <version>0.9.15</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <version>0.8.0</version>
+          <executions>
+            <!--
+              Prepares the property pointing to the JaCoCo runtime agent which
+              is passed as VM argument when the Maven Surefire plugin is executed.
+            -->
+            <execution>
+              <id>pre-unit-test</id>
+              <goals>
+                <goal>prepare-agent</goal>
+              </goals>
+              <configuration>
+                <propertyName>surefireArgLine</propertyName>
+              </configuration>
+            </execution>
+            <!--
+              Ensures that the code coverage report for unit tests is created after
+              unit tests have been run.
+            -->
+            <execution>
+              <id>post-unit-test</id>
+              <phase>test</phase>
+              <goals>
+                <goal>report</goal>
+              </goals>
+            </execution>
+          </executions>
         </plugin>
       </plugins>
     </pluginManagement>
